@@ -173,7 +173,7 @@ class counting_decoder : public decoder< I >, public impl::counting {
  * Compute optimal state initialization vector from given frequency vector.
  *
  * @param f the measured frequency vector
- * @return a state_vector the probabilities of which approximate the measured frequencies
+ * @return a state_vector which approximates the measured frequencies
  */
 state_vector initialization_vector( const frequency_vector& f ) {
   const frequency_vector::size_type size = f.size();
@@ -198,6 +198,21 @@ state_vector initialization_vector( const frequency_vector& f ) {
     s.push_back( best_idx );
   }
   return s;
+}
+
+/**
+ * Accumulate frequencies from different vectors.
+ *
+ * @param lhs the output vector
+ * @param rhs the vector to accumulate
+ */
+void operator+=( frequency_vector& lhs, const frequency_vector& rhs ) {
+  const frequency_vector::size_type size = lhs.size();
+  assert( size == rhs.size() );
+  for ( frequency_vector::size_type i = 0; i < size; ++i ) {
+    lhs[ i ].first += rhs[ i ].first;
+    lhs[ i ].second += rhs[ i ].second;
+  }
 }
 
 }

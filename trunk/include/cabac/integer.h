@@ -77,6 +77,20 @@ inline void encode_seg( E &e, const signed int value, const unsigned int k, stat
   encode_ueg( e, abs_value * 2 - ( value < 0 ), k, idx, num_ctx );
 }
 
+template< class E >
+inline void encode_uf( E &e, unsigned int value, unsigned int k ) {
+  assert( k );
+  while ( k-- )
+    e.encode_bypass( ( value >> k ) & 1 );
+}
+
+template< class E >
+inline void encode_sf( E &e, signed int value, unsigned int k ) {
+  assert( k );
+  while ( k-- )
+    e.encode_bypass( ( value >> k ) & 1 );
+}
+
 /**
   * Decode an unsigned integer.
   *
@@ -122,6 +136,26 @@ inline signed int decode_seg( D &d, const unsigned int k, const state_vector::si
   signed int value = ( dec_value + 1 ) / 2;
   if ( dec_value & 1 )
     value *= -1;
+  return value;
+}
+
+template< class D >
+inline unsigned int decode_uf( D &d, unsigned int k ) {
+  assert( k );
+  unsigned int value = 0;
+  while ( k-- )
+    if ( d.decode_bypass() )
+      value += static_cast< unsigned int >( 1 ) << k;
+  return value;
+}
+
+template< class D >
+inline signed int decode_sf( D &d, unsigned int k ) {
+  assert( k );
+  signed int value = d.decode_bypass() ? ~0 : 0;
+  while ( --k )
+    if ( !d.decode_bypass() )
+      value &= ~( static_cast< signed int >( 1 ) << k );
   return value;
 }
 

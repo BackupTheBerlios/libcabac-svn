@@ -20,6 +20,7 @@
 #ifndef _OHTU7AY3EI_CABAC_COMMON_H
 #define _OHTU7AY3EI_CABAC_COMMON_H 1
 
+#include <stdint.h>
 #include <vector>
 #ifdef CABAC_DEBUG_OUTPUT
 # include <iostream>
@@ -51,11 +52,11 @@
 namespace cabac {
 
 // tables in cabac.cpp
-extern const unsigned char range_tab_lps[ 64 ][ 4 ];
-extern const unsigned char trans_idx_lps[ 64 ];
-extern const unsigned char trans_idx_mps[ 64 ];
+extern const uint8_t range_tab_lps[ 64 ][ 4 ];
+extern const uint8_t trans_idx_lps[ 64 ];
+extern const uint8_t trans_idx_mps[ 64 ];
 extern const float expect_tab[ 128 ];
-extern const unsigned short bits_tab[ 128 ];
+extern const uint16_t bits_tab[ 128 ];
 
 /**
  * CABAC state vector.
@@ -66,7 +67,7 @@ extern const unsigned short bits_tab[ 128 ];
  *
  * bits 1-6: pStateIdx according to ISO/IEC 14496-10 / ITU-T Rec. H.264
  */
-typedef ::std::vector< unsigned char > state_vector;
+typedef ::std::vector< uint8_t > state_vector;
 
 #if defined( _OHTU7AY3EI_CABAC_CPP ) || !defined( NDEBUG )
 inline unsigned int FIX8( const double f ) {

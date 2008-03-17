@@ -27,12 +27,12 @@ namespace cabac {
 /**
  * CABAC %decoder.
  *
- * Reads the bitstream from an arbitrary STL-compatible iterator of unsigned char.
+ * Reads the bitstream from an arbitrary STL-compatible iterator of uint8_t.
  *
  * Typically, the declaration of the decoder would be done this way:
  *
  * @code
- * typedef std::vector< unsigned char > bitstream;
+ * typedef std::vector< uint8_t > bitstream;
  * typedef bitstream::const_iterator iter_type;
  *
  * bitstream bs = ... // get bitstream from somewhere
@@ -42,12 +42,12 @@ namespace cabac {
  * @endcode
  *
  * Note that you can use *any* STL-compatible iterator to read the bitstream from and that a pointer
- * to unsigned char is an iterator, too! (Hence, raw memory access is possible though not recommended.)
+ * to uint8_t is an iterator, too! (Hence, raw memory access is possible though not recommended.)
  *
  * As another example, to read the bitstream directly from a file, you could use a standard istream_iterator:
  *
  * @code
- * typedef std::istream_iterator< unsigned char > iter_type;
+ * typedef std::istream_iterator< uint8_t > iter_type;
  *
  * std::istream is( "some.file" );
  * cabac::decoder< iter_type >( iter_type( is ), initial_states );
@@ -100,7 +100,7 @@ class decoder : public impl::decoder_base {
   /**
    * Constructor.
    *
-   * @param input an STL-compatible input iterator on a container of unsigned char, used to read the bitstream
+   * @param input an STL-compatible input iterator on a container of uint8_t, used to read the bitstream
    * @param states the initial state vector
    */
   decoder( const I &input, const state_vector &states ) :

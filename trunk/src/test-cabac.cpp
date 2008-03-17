@@ -58,7 +58,7 @@ int main( int argc, char *argv[] ) {
   vector< bool > decisions;
   vector< int > ints;
 
-  vector< unsigned char > buffer;
+  vector< uint8_t > buffer;
 
   generate_n( back_insert_iterator< state_vector >( states ), num_states, rand_gen< int >( 128, 0 ) );
   generate_n( back_insert_iterator< vector< int > >( indexes ), num_decisions, rand_gen< int >( num_states + 1, 0 ) );
@@ -68,8 +68,8 @@ int main( int argc, char *argv[] ) {
   frequency_vector freq_enc;
 
   {
-    counting_encoder< back_insert_iterator< vector< unsigned char > > >
-      e( back_insert_iterator< vector< unsigned char > >( buffer ), states );
+    counting_encoder< back_insert_iterator< vector< uint8_t > > >
+      e( back_insert_iterator< vector< uint8_t > >( buffer ), states );
 
 #ifdef CABAC_DEBUG_OUTPUT
     cout << "ENCODING:" << endl;
@@ -107,7 +107,7 @@ int main( int argc, char *argv[] ) {
   cout << "DECODING:" << endl;
 #endif
 
-  counting_decoder< vector< unsigned char >::const_iterator >
+  counting_decoder< vector< uint8_t >::const_iterator >
     d( buffer.begin(), states );
 
   bool b;

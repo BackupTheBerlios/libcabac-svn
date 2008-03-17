@@ -22,7 +22,7 @@
 
 namespace cabac {
 
-const unsigned char range_tab_lps[ 64 ][ 4 ] = {
+const uint8_t range_tab_lps[ 64 ][ 4 ] = {
   { 128, 176, 208, 240 }, { 128, 167, 197, 227 },
   { 128, 158, 187, 216 }, { 123, 150, 178, 205 },
   { 116, 142, 169, 195 }, { 111, 135, 160, 185 },
@@ -57,7 +57,7 @@ const unsigned char range_tab_lps[ 64 ][ 4 ] = {
   {   6,   7,   8,   9 }, {   2,   2,   2,   2 },
 };
 
-const unsigned char trans_idx_lps[ 64 ] = {
+const uint8_t trans_idx_lps[ 64 ] = {
    0,  0,  1,  2,  2,  4,  4,  5,
    6,  7,  8,  9,  9, 11, 11, 12,
   13, 13, 15, 15, 16, 16, 18, 18,
@@ -68,7 +68,7 @@ const unsigned char trans_idx_lps[ 64 ] = {
   36, 36, 37, 37, 37, 38, 38, 63,
 };
 
-const unsigned char trans_idx_mps[ 64 ] = {
+const uint8_t trans_idx_mps[ 64 ] = {
    1,  2,  3,  4,  5,  6,  7,  8,
    9, 10, 11, 12, 13, 14, 15, 16,
   17, 18, 19, 20, 21, 22, 23, 24,
@@ -146,7 +146,7 @@ const float expect_tab[ 128 ] = {
   1 - PLPS( 63 ), PLPS( 63 ),
 };
 
-const unsigned short bits_tab[ 128 ] = {
+const uint16_t bits_tab[ 128 ] = {
   FIX8( BITS( 1 - PLPS(  0 ) ) ), FIX8( BITS( PLPS(  0 ) ) ),
   FIX8( BITS( 1 - PLPS(  1 ) ) ), FIX8( BITS( PLPS(  1 ) ) ),
   FIX8( BITS( 1 - PLPS(  2 ) ) ), FIX8( BITS( PLPS(  2 ) ) ),

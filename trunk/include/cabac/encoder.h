@@ -27,12 +27,12 @@ namespace cabac {
 /**
  * CABAC %encoder.
  *
- * Writes the bitstream to an arbitrary STL-compatible iterator of unsigned char.
+ * Writes the bitstream to an arbitrary STL-compatible iterator of uint8_t.
  *
  * Typically, the declaration of the encoder would be done this way:
  *
  * @code
- * typedef std::vector< unsigned char > bitstream;
+ * typedef std::vector< uint8_t > bitstream;
  * typedef std::back_insert_iterator< bitstream > iter_type;
  *
  * bitstream bs;
@@ -42,16 +42,16 @@ namespace cabac {
  * enc.encode( ... ); // encode from here
  * @endcode
  *
- * This uses an STL vector of unsigned char to hold the bitstream. The call to reserve() ensures
+ * This uses an STL vector of uint8_t to hold the bitstream. The call to reserve() ensures
  * that -- if the estimation is correct -- the vector does not have to reallocate memory too often.
  *
  * Note that you can use *any* STL-compatible output iterator to write the bitstream to and that a pointer
- * to unsigned char is an iterator, too! (Hence, raw memory access is possible though not recommended.)
+ * to uint8_t is an iterator, too! (Hence, raw memory access is possible though not recommended.)
  *
  * As another example, to write the bitstream directly to a file, you could use a standard ostream_iterator:
  *
  * @code
- * typedef std::ostream_iterator< unsigned char > iter_type;
+ * typedef std::ostream_iterator< uint8_t > iter_type;
  *
  * std::ostream os( "filename.bin" );
  * cabac::encoder< iter_type >( iter_type( os ), initial_states );
@@ -140,7 +140,7 @@ class encoder : public impl::encoder_base {
   /**
    * Constructor.
    *
-   * @param output an STL-compatible output iterator on a container of unsigned char, used to write the bitstream
+   * @param output an STL-compatible output iterator on a container of uint8_t, used to write the bitstream
    * @param states the initial state vector
    */
   encoder( const I &output, const state_vector &states ) :

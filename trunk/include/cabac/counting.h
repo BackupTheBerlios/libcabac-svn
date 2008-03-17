@@ -90,7 +90,7 @@ class counting_encoder : public encoder< I >, public impl::counting {
   /**
    * Constructor.
    *
-   * @param output an STL-compatible output iterator on a container of unsigned char, used to write the bitstream
+   * @param output an STL-compatible output iterator on a container of uint8_t, used to write the bitstream
    * @param states the initial state vector
    */
   counting_encoder( const I &output, const state_vector &states ) :
@@ -153,7 +153,7 @@ class counting_decoder : public decoder< I >, public impl::counting {
   /**
    * Constructor.
    *
-   * @param input an STL-compatible input iterator on a container of unsigned char, used to read the bitstream
+   * @param input an STL-compatible input iterator on a container of uint8_t, used to read the bitstream
    * @param states the initial state vector
    */
   counting_decoder( const I &input, const state_vector &states ) :

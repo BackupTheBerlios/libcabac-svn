@@ -188,7 +188,7 @@ state_vector initialization_vector( const frequency_vector& f ) {
     const float expect = f[ i ].second / static_cast< float >( sum );
     unsigned int best_idx;
     float best = 2;
-    for ( unsigned int idx = 0; idx < 128; ++idx ) {
+    for ( unsigned int idx = 0; idx < 126; ++idx ) {
       const float diff = ::std::abs( expect - expect_tab[ idx ] );
       if ( diff < best ) {
         best = diff;

@@ -54,7 +54,7 @@ namespace cabac {
  * typedef std::ostream_iterator< uint8_t > iter_type;
  *
  * std::ostream os( "filename.bin" );
- * cabac::encoder< iter_type >( iter_type( os ), initial_states );
+ * cabac::encoder< iter_type > enc( iter_type( os ), initial_states );
  *
  * enc.encode( ... ); // encode from here
  * @endcode

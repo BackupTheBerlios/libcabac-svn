@@ -50,7 +50,7 @@ namespace cabac {
  * typedef std::istream_iterator< uint8_t > iter_type;
  *
  * std::istream is( "some.file" );
- * cabac::decoder< iter_type >( iter_type( is ), initial_states );
+ * cabac::decoder< iter_type > dec( iter_type( is ), initial_states );
  *
  * dec.decode( ... ); // decode from here
  * @endcode
